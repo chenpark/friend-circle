@@ -12,20 +12,22 @@
 #import "CYCPhotoViewController.h"
 #import "CYCPhoto.h"
 #import "SVProgressHUD.h"
+#import "Message.h"
+#import "SqliteTool.h"
+#import "ImageTool.h"
 #import <CoreLocation/CoreLocation.h>
 @interface SendMsgViewController () <CYCPhotoViewControllerDelegate,CLLocationManagerDelegate>
 @property (weak,nonatomic) UITextField *tf;
 @property (weak,nonatomic) UITextView *tfV;
-@property (strong,nonatomic) NSArray *photos;
+@property (strong,nonatomic) NSMutableArray *photos;
 @property (weak,nonatomic) UIView *picView;
-@property (strong,nonatomic) NSString *loc;
 @end
 
 @implementation SendMsgViewController
 
--(NSArray *)photos{
+-(NSMutableArray *)photos{
     if(!_photos){
-        _photos = [[NSArray alloc]init];
+        _photos = [NSMutableArray array];
     }
     return _photos;
 }
@@ -109,6 +111,7 @@
         for(int i=0;i<photos.count;i++){
             UIButton *btn = [[UIButton alloc]init];
             CYCPhoto *photo = photos[i];
+            [self.photos addObject:photo.image];
             [btn setBackgroundImage:photo.image forState:UIControlStateNormal];
             imgX = (i%4)*imgW+(i%4+1)*margin;
             imgY = (i/4)*imgH+(i/4+1)*margin;
@@ -118,7 +121,7 @@
             [btn addTarget:self action:@selector(delBtn:) forControlEvents:UIControlEventTouchUpInside];
         }
     }else{
-        
+        [self.photos addObject:photos];
         if(photos.count + self.picView.subviews.count >10){
             [SVProgressHUD showErrorWithStatus:@"添加的图片总数不能超过9张"];
             return;
@@ -127,6 +130,7 @@
             for(int i=0;i<photos.count;i++){
                 UIButton *btn = [[UIButton alloc]init];
                 CYCPhoto *photo = photos[i];
+                [self.photos addObject:photo.image];
                 [btn setBackgroundImage:photo.image forState:UIControlStateNormal];
                 [self.picView addSubview:btn];
                 
@@ -177,12 +181,22 @@
             [view removeFromSuperview];
         }
     }
-    self.tf.placeholder = @"请输入你的小名";
-    self.tfV.text = @"说点什么吧，小伙子";
+    self.tf.text = @"chenpark";
+    self.tfV.text = @"我已经用尽了我的洪荒之力了";
 }
 
 //存储数据到本地数据库
 -(void)submitData{
+    
+    //获取编码后的字符串
+    NSString *picStr = [ImageTool imageArrayToString:self.photos];
+    
+    Message *mes = [[Message alloc]init];
+    mes.name = self.tf.text;
+    mes.text = self.tfV.text;
+    mes.picString = picStr;
+    [SqliteTool insertData:mes];
+    
     
 }
 @end
