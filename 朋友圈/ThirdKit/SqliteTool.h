@@ -14,6 +14,8 @@
 +(void)insertData:(Message *)message;
 
 //查询数据
-+(NSArray *)selectData:(Message *)message;
++(NSArray *)selectData;
 
+//删除数据
++(void)deleteData:(Message *)message;
 @end

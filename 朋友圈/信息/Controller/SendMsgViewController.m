@@ -15,15 +15,23 @@
 #import "Message.h"
 #import "SqliteTool.h"
 #import "ImageTool.h"
-#import <CoreLocation/CoreLocation.h>
-@interface SendMsgViewController () <CYCPhotoViewControllerDelegate,CLLocationManagerDelegate>
+#import "DiscoverViewController.h"
+@interface SendMsgViewController () <CYCPhotoViewControllerDelegate>
 @property (weak,nonatomic) UITextField *tf;
 @property (weak,nonatomic) UITextView *tfV;
 @property (strong,nonatomic) NSMutableArray *photos;
+@property (strong,nonatomic) NSMutableArray *pics;
 @property (weak,nonatomic) UIView *picView;
 @end
 
 @implementation SendMsgViewController
+
+-(NSMutableArray *)pics{
+    if(!_pics){
+        _pics = [NSMutableArray array];
+    }
+    return _pics;
+}
 
 -(NSMutableArray *)photos{
     if(!_photos){
@@ -35,6 +43,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.view setBackgroundColor:[UIColor blueColor]];
+    UINavigationController *nav = [[UINavigationController alloc]init];
+    nav.navigationItem.title = @"消息";
     
     [self setMsgView];
     
@@ -111,7 +121,7 @@
         for(int i=0;i<photos.count;i++){
             UIButton *btn = [[UIButton alloc]init];
             CYCPhoto *photo = photos[i];
-            [self.photos addObject:photo.image];
+            [self.pics addObject:photo.image];
             [btn setBackgroundImage:photo.image forState:UIControlStateNormal];
             imgX = (i%4)*imgW+(i%4+1)*margin;
             imgY = (i/4)*imgH+(i/4+1)*margin;
@@ -130,7 +140,7 @@
             for(int i=0;i<photos.count;i++){
                 UIButton *btn = [[UIButton alloc]init];
                 CYCPhoto *photo = photos[i];
-                [self.photos addObject:photo.image];
+                [self.pics addObject:photo.image];
                 [btn setBackgroundImage:photo.image forState:UIControlStateNormal];
                 [self.picView addSubview:btn];
                 
@@ -181,22 +191,20 @@
             [view removeFromSuperview];
         }
     }
-    self.tf.text = @"chenpark";
-    self.tfV.text = @"我已经用尽了我的洪荒之力了";
 }
 
 //存储数据到本地数据库
 -(void)submitData{
     
     //获取编码后的字符串
-    NSString *picStr = [ImageTool imageArrayToString:self.photos];
-    
+    NSString *picStr = [ImageTool imageArrayToString:self.pics];
     Message *mes = [[Message alloc]init];
     mes.name = self.tf.text;
     mes.text = self.tfV.text;
     mes.picString = picStr;
+    
     [SqliteTool insertData:mes];
     
-    
+    [SVProgressHUD showSuccessWithStatus:[NSString stringWithFormat:@"%lu,添加成功",(unsigned long)self.pics.count]];
 }
 @end

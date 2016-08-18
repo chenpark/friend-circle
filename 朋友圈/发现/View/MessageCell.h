@@ -1,5 +1,5 @@
 //
-//  DiscoverViewController.h
+//  MessageCell.h
 //  朋友圈
 //
 //  Created by Chenpark on 16/2/21.
@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface DiscoverViewController : UITableViewController
-
+@class Message;
+@interface MessageCell : UITableViewCell
+@property (strong,nonatomic) Message *message;
 @end

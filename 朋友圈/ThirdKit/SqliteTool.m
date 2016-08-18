@@ -20,6 +20,8 @@ static sqlite3 *_db;
     
     NSString *fullPath = [path stringByAppendingPathComponent:@"demo.sqlite"];
     
+    NSLog(@"%@",fullPath);
+    
     // 1.打开数据
     // sqlite3 *db; // 一个db就代表一个数据库
     // open会先判断数据库文件是否存在, 如果不存在会自动创建数据库文件, 然后再打开数据
@@ -72,9 +74,9 @@ static sqlite3 *_db;
 }
 
 //查询数据
-+(NSArray *)selectData:(Message *)message{
++(NSArray *)selectData{
     
-    NSString *sql = [NSString stringWithFormat:@"SELECT * FROM t_stu where id = '%li'",(long)message.ID];
+    NSString *sql = [NSString stringWithFormat:@"SELECT * FROM t_stu"];
     
     //准备查询
     sqlite3_stmt *stmt;//用于提取数据变量

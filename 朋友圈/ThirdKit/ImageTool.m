@@ -17,21 +17,21 @@
     for(UIImage *img in arrayM){
         ImageTool *tool = [[ImageTool alloc]init];
         NSString *str = [tool UIImageToBase64Str:img];
-        [stringM appendString:[NSString stringWithFormat:@"%@&@&",str]];
+        [stringM appendString:[NSString stringWithFormat:@"%@&@",str]];
     }
     return stringM;
 }
 
 //把编码后的字符串转成图片数组
 +(NSMutableArray *)stringToArray:(NSString *)str{
-    NSArray *arr = [str componentsSeparatedByString:@"@&@&"];
+    NSArray *arr = [str componentsSeparatedByString:@"&@"];
     NSMutableArray *arrayM = [NSMutableArray array];
     ImageTool *tool = [[ImageTool alloc]init];
     for(int i=0;i<arr.count;i++){
-        //去掉多余的字符
-        NSString  *s1 = [arr[i] stringByReplacingOccurrencesOfString:@"@&@&"withString:@""];
-        UIImage *img = [tool Base64StrToUIImage:s1];
-        [arrayM addObject:img];
+        UIImage *img = [tool Base64StrToUIImage:arr[i]];
+        if(img){
+            [arrayM addObject:img];
+        }
     }
     return arrayM;
 }

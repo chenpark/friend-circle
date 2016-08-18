@@ -21,6 +21,7 @@
 		9054D9B51D6063A6008059C7 /* CYCPhotoViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9054D9AF1D6063A6008059C7 /* CYCPhotoViewCell.m */; };
 		9054D9BD1D607547008059C7 /* Message.m in Sources */ = {isa = PBXBuildFile; fileRef = 9054D9BC1D607547008059C7 /* Message.m */; };
 		9056E04D1D6588790030C7C4 /* ImageTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 9056E04C1D6588790030C7C4 /* ImageTool.m */; };
+		905742DB1D65FEDA00703047 /* MesPhotosView.m in Sources */ = {isa = PBXBuildFile; fileRef = 905742DA1D65FEDA00703047 /* MesPhotosView.m */; };
 		90C9BCD91D5E89BF00C2F446 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 90C9BCD81D5E89BF00C2F446 /* main.m */; };
 		90C9BCDC1D5E89BF00C2F446 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 90C9BCDB1D5E89BF00C2F446 /* AppDelegate.m */; };
 		90C9BCDF1D5E89BF00C2F446 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 90C9BCDE1D5E89BF00C2F446 /* ViewController.m */; };
@@ -33,6 +34,8 @@
 		90C9BD141D5EA80F00C2F446 /* TabBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = 90C9BD131D5EA80F00C2F446 /* TabBtn.m */; };
 		90D8B5291D65A35C00E63066 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 90D8B5281D65A35C00E63066 /* libsqlite3.tbd */; };
 		90D8B52C1D65A37700E63066 /* SqliteTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 90D8B52B1D65A37700E63066 /* SqliteTool.m */; };
+		90D8B5301D65AF2700E63066 /* MessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 90D8B52E1D65AF2700E63066 /* MessageCell.m */; };
+		90D8B5311D65AF2700E63066 /* MessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90D8B52F1D65AF2700E63066 /* MessageCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,6 +64,8 @@
 		9054D9BC1D607547008059C7 /* Message.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Message.m; sourceTree = "<group>"; };
 		9056E04B1D6588790030C7C4 /* ImageTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageTool.h; sourceTree = "<group>"; };
 		9056E04C1D6588790030C7C4 /* ImageTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageTool.m; sourceTree = "<group>"; };
+		905742D91D65FEDA00703047 /* MesPhotosView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MesPhotosView.h; sourceTree = "<group>"; };
+		905742DA1D65FEDA00703047 /* MesPhotosView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MesPhotosView.m; sourceTree = "<group>"; };
 		90C9BCD41D5E89BF00C2F446 /* 朋友圈.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "朋友圈.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		90C9BCD81D5E89BF00C2F446 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		90C9BCDA1D5E89BF00C2F446 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -83,6 +88,9 @@
 		90D8B5281D65A35C00E63066 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		90D8B52A1D65A37700E63066 /* SqliteTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SqliteTool.h; sourceTree = "<group>"; };
 		90D8B52B1D65A37700E63066 /* SqliteTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SqliteTool.m; sourceTree = "<group>"; };
+		90D8B52D1D65AF2700E63066 /* MessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageCell.h; sourceTree = "<group>"; };
+		90D8B52E1D65AF2700E63066 /* MessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageCell.m; sourceTree = "<group>"; };
+		90D8B52F1D65AF2700E63066 /* MessageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -262,6 +270,11 @@
 		90C9BCF11D5E8AA700C2F446 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				905742D91D65FEDA00703047 /* MesPhotosView.h */,
+				905742DA1D65FEDA00703047 /* MesPhotosView.m */,
+				90D8B52D1D65AF2700E63066 /* MessageCell.h */,
+				90D8B52E1D65AF2700E63066 /* MessageCell.m */,
+				90D8B52F1D65AF2700E63066 /* MessageCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -395,6 +408,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9054D9941D60361F008059C7 /* SVProgressHUD.bundle in Resources */,
+				90D8B5311D65AF2700E63066 /* MessageCell.xib in Resources */,
 				9054D9B31D6063A6008059C7 /* checked.png in Resources */,
 				90C9BCE71D5E89BF00C2F446 /* LaunchScreen.storyboard in Resources */,
 				90C9BCE41D5E89BF00C2F446 /* Assets.xcassets in Resources */,
@@ -417,10 +431,12 @@
 				90C9BD021D5E8B7E00C2F446 /* DiscoverViewController.m in Sources */,
 				904B903E1D5F7C0C004A613D /* UIView+Frame.m in Sources */,
 				9054D9921D60361F008059C7 /* SVIndefiniteAnimatedView.m in Sources */,
+				905742DB1D65FEDA00703047 /* MesPhotosView.m in Sources */,
 				90C9BCDC1D5E89BF00C2F446 /* AppDelegate.m in Sources */,
 				9054D9BD1D607547008059C7 /* Message.m in Sources */,
 				9054D9B21D6063A6008059C7 /* CYCWaterFlowLayout.m in Sources */,
 				9054D9951D60361F008059C7 /* SVProgressHUD.m in Sources */,
+				90D8B5301D65AF2700E63066 /* MessageCell.m in Sources */,
 				90C9BD081D5EA29400C2F446 /* MainViewController.m in Sources */,
 				9054D9961D60361F008059C7 /* SVRadialGradientLayer.m in Sources */,
 				9054D9931D60361F008059C7 /* SVProgressAnimatedView.m in Sources */,

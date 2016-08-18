@@ -7,16 +7,31 @@
 //
 
 #import "DiscoverViewController.h"
-
+#import "SqliteTool.h"
+#import "Message.h"
+#import "ImageTool.h"
+#import "MessageCell.h"
 @interface DiscoverViewController ()
-
+@property (strong,nonatomic) NSArray *mes;
 @end
 
 @implementation DiscoverViewController
+-(NSArray *)mes{
+    if(!_mes){
+    _mes = [[NSArray alloc]init];
+    }
+    return _mes;
+}
 
+static NSString *identifier = @"message";
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self.view setBackgroundColor:[UIColor redColor]];
+   
+    NSArray *array = [SqliteTool selectData];
+    self.mes = array;
+
+    [self.tableView registerNib:[UINib nibWithNibName:@"MessageCell" bundle:nil] forCellReuseIdentifier:identifier];
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -24,14 +39,19 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return self.mes.count;
 }
-*/
 
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    MessageCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+    Message *mes = self.mes[indexPath.row];
+    cell.message = mes;
+    return cell;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    Message *mes = self.mes[indexPath.row];
+    return mes.cellHeight;
+}
 @end
